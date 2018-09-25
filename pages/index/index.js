@@ -3,6 +3,7 @@
 const app = getApp()
 //const colorThief = require('./ColorThief').default
 import ColorThief from './ColorThief.js'
+import namer from 'color-namer'
 
 Page({
   data: {
@@ -17,6 +18,8 @@ Page({
   },
   onLoad: function () {
     this.colorThief = new ColorThief()
+
+    console.log('xxx...', namer('#7EBEBF', { pick: ['basic', 'x11'] }))
   },
 
   chooseImage() {
