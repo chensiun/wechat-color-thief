@@ -7,6 +7,8 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#333",
     "navigationBarTitleText": "Color Thief",
-    "navigationBarTextStyle":"#a4a4a4"
+    "navigationBarTextStyle": "#a4a4a4",
+    "backgroundColor": "#f4f4f4",
+    "disableScroll": true
   }
 }

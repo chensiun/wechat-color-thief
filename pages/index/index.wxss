@@ -5,18 +5,30 @@ page {
 }
 .container {
   padding: 0;
-  padding-top:40rpx;
   background-color: #f4f4f4;
   height: 100%;
   overflow: hidden;
 }
 .photoSrc {
-  width: 60%;
+  margin-top:40rpx;
+  width: 300px;
+  height: 300px;
 }
 .cameraImg {
   width: 100rpx;
   height: 100rpx;
-  margin-top: 160rpx;
+  margin-top: 48%;
+}
+.colorName {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  right: 10rpx;
+  background: #333;
+  color:#a4a4a4;
+  padding: 4rpx 20rpx;
+  border-radius: 24px;
+  font-size: 24rpx;
 }
 .btns {
   position: absolute;

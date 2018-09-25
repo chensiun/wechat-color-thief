@@ -1,11 +1,9 @@
 <!--index.wxml-->
 <view class="container" style="background:{{curColor || palettes[0]}};">
-  <!-- camera.wxml -->
-  <!-- <camera device-position="back" flash="off" binderror="photoError" style="width: 100%; height: 300px;"></camera> -->
-  <!-- <button type="primary" bindtap="takePhoto">拍照</button> -->
-
   <image wx:if="{{!photoSrc}}" class='cameraImg' bindtap="chooseImage" src="{{'./assets/camera.png'}}"></image>
   <image wx:else class='photoSrc' src="{{photoSrc}}"></image>
+
+  <view wx:if="{{colorName}}" class='colorName'>{{colorName}}</view>
 
   <view wx:if="{{photoSrc}}" class='btns'>
     <image bindtap='onThiefColor' class='scanBtn' src='{{"./assets/scan.png"}}'></image>

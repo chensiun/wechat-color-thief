@@ -18,8 +18,6 @@ Page({
   },
   onLoad: function () {
     this.colorThief = new ColorThief()
-
-    console.log('xxx...', namer('#7EBEBF', { pick: ['basic', 'x11'] }))
   },
 
   chooseImage() {
@@ -41,7 +39,8 @@ Page({
       photoSrc: '',
       palettes: [],
       ringStatus: 'hide',
-      curColor: ''
+      curColor: '',
+      colorName: '',
     })
   },
 
@@ -52,6 +51,8 @@ Page({
     this.colorThief.getPalette(src, 5).then(data => {
       const rgbs = this.colorThief.convertColorRgb(data)
       this.setData({ palettes: rgbs })
+
+      this.onGetColorName(rgbs[0])
     })
   },
 
@@ -68,9 +69,22 @@ Page({
       return p
     })
 
+    const newCurColor = this.data.palettes[setIndex]
     this.setData({
-      curColor: this.data.palettes[setIndex],
+      curColor: newCurColor,
       palettes: newPalettes,
     })
+
+    this.onGetColorName(newCurColor)
+  },
+
+  onGetColorName (color) {
+    const names = namer(color, { pick: ['basic', 'html'] })
+    const { basic, html } = names || {}
+    const basicName = basic && basic[0] || {}
+    const htmlName = html && html[0] || {}
+    const name = basicName.name === htmlName.name ? basicName.name : `${htmlName.name} ${basicName.name}`
+
+    this.setData({ colorName: name })
   }
 })
