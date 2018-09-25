@@ -1,15 +1,102 @@
 /**index.wxss**/
+page {
+  height: 100%;
+  overflow: hidden;
+}
 .container {
+  padding: 0;
+  padding-top:40rpx;
   background-color: #f4f4f4;
+  height: 100%;
+  overflow: hidden;
+}
+.photoSrc {
+  width: 60%;
 }
 .cameraImg {
   width: 100rpx;
   height: 100rpx;
+  margin-top: 160rpx;
 }
-/* .canvasPlaceholder {
-  //display: none;
-} */
-.mainColor {
-  width: 100px;
-  height: 100px;
+.btns {
+  position: absolute;
+  bottom: 80rpx;
+}
+.scanBtn {
+  width: 100rpx;
+  height: 80rpx;
+  margin-right: 80rpx;
+}
+.resetBtn {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.outRing {
+  width: 300rpx;
+  height: 300rpx;
+  position: absolute;
+  top: 70%;
+  left: -150rpx;
+  transform: translateY(-50%) rotate(-180deg);
+  transition: 0.4s all;
+}
+.ring {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+.outRing .one {
+  clip-path: polygon(50% 0, 100% 0, 50% 50%);
+}
+.outRing .two {
+  clip-path: polygon(100% 0, 100% 50%, 50% 50%);
+}
+.outRing .three {
+  clip-path: polygon(100% 50%, 100% 100%, 50% 50%);
+}
+.outRing .four {
+  clip-path: polygon(100% 100%, 50% 100%, 50% 50%);
+}
+.outRing .cut {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f4f4;
+  border-radius: 50%;
+}
+.showRing {
+  transition: 0.4s all;
+  transform: translateY(-50%) rotate(0deg);
+}
+.showRingBtn {
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 8rpx;
+  top: 70%;
+  transform: translateY(-50%) rotate(0);
+  transition: 0.4s all;
+}
+.hideRingBtn {
+  transition: 0.4s all;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.fireWork {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: -14rpx;
+}
+.canvasPlaceholder {
+  position: absolute;
+  top: -1000rpx;
+  left: -1000rpx;
 }

@@ -6,6 +6,8 @@ import ColorThief from './ColorThief.js'
 
 Page({
   data: {
+    ringStatus: 'hide',
+    palettes: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -18,40 +20,54 @@ Page({
   },
 
   chooseImage() {
+    const that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
-        this.setData({
-          photoSrc: res.tempImagePath
-        })
+        const tempFilePaths = res.tempFilePaths
+        that.setData({ photoSrc: tempFilePaths[0] })
       }
     })
   },
 
-  takePhoto() {
-    //console.log('xxx...su')
-    // const ctx = wx.createCameraContext()
-    // ctx.takePhoto({
-    //   quality: 'high',
-    //   success: (res) => {
-    //     this.setData({
-    //       photoSrc: res.tempImagePath
-    //     })
-    //   }
-    // })
-  },
-  photoError(e) {
-    console.log(e.detail)
+  onResetImage() {
+    this.setData({
+      photoSrc: '',
+      palettes: [],
+      ringStatus: 'hide',
+      curColor: ''
+    })
   },
 
   onThiefColor() {
+    if (this.data.palettes.length) return
+  
     const src = this.data.photoSrc
-    this.colorThief.getColor(src).then(data => {
-      const rgb = this.colorThief.convertColorRgb(data)
-      this.setData({ mainColor: rgb })
+    this.colorThief.getPalette(src, 5).then(data => {
+      const rgbs = this.colorThief.convertColorRgb(data)
+      this.setData({ palettes: rgbs })
+    })
+  },
+
+  onToggleRing() {
+    this.setData({ ringStatus: this.data.ringStatus === 'show' ? 'hide' : 'show' })
+  },
+
+  onSetColor (event) {
+    const setIndex = event.target.dataset.colorindex
+    const curColor = this.data.curColor || this.data.palettes[0]
+    
+    const newPalettes = this.data.palettes.map((p, i) => {
+      if (setIndex == i) return curColor
+      return p
+    })
+
+    this.setData({
+      curColor: this.data.palettes[setIndex],
+      palettes: newPalettes,
     })
   }
 })

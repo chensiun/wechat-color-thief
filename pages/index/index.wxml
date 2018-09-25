@@ -1,12 +1,27 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" style="background:{{curColor || palettes[0]}};">
   <!-- camera.wxml -->
   <!-- <camera device-position="back" flash="off" binderror="photoError" style="width: 100%; height: 300px;"></camera> -->
   <!-- <button type="primary" bindtap="takePhoto">拍照</button> -->
-  <image class='cameraImg' bindtap="chooseImage" src="{{'./assets/camera.png'}}"></image>
-  <view>预览</view>
-  <image mode="widthFix" src="{{photoSrc}}"></image>
-  <button type='primary' bindtap='onThiefColor'>识别</button>
+
+  <image wx:if="{{!photoSrc}}" class='cameraImg' bindtap="chooseImage" src="{{'./assets/camera.png'}}"></image>
+  <image wx:else class='photoSrc' src="{{photoSrc}}"></image>
+
+  <view wx:if="{{photoSrc}}" class='btns'>
+    <image bindtap='onThiefColor' class='scanBtn' src='{{"./assets/scan.png"}}'></image>
+    <image bindtap='onResetImage' class='resetBtn' src='{{"./assets/reset.png"}}'></image>
+  </view>
+
+  <view class='outRing {{ringStatus === "show" && "showRing"}}'>
+    <view bindtap='onSetColor' data-colorIndex='1' class='ring one' style="background:{{palettes[1]}};"></view>
+    <view bindtap='onSetColor' data-colorIndex='2' class='ring two' style="background:{{palettes[2]}};"></view>
+    <view bindtap='onSetColor' data-colorIndex='3' class='ring three' style="background:{{palettes[3]}};"></view>
+    <view bindtap='onSetColor' data-colorIndex='4' class='ring four' style="background:{{palettes[4]}};"></view>
+    <view class='cut' style="background:{{curColor || palettes[0]}};"></view>
+  </view>
+  <image wx:if="{{palettes[0]}}" bindtap='onToggleRing' class='showRingBtn {{ringStatus === "show" && "hideRingBtn"}}' src="{{'./assets/add.png'}}"></image>
+
+  <image class='fireWork' src="{{'./assets/fireWork.png'}}"></image>
+
   <canvas style="width: 100px; height: 100px;" class='canvasPlaceholder' canvas-id='canvasPlaceholder'></canvas>
-  <view style="background:{{mainColor}};" class='mainColor'></view>
 </view>
