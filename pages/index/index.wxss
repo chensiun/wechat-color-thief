@@ -1,4 +1,11 @@
 /**index.wxss**/
+.container {
+  background-color: #f4f4f4;
+}
+.cameraImg {
+  width: 100rpx;
+  height: 100rpx;
+}
 /* .canvasPlaceholder {
   //display: none;
 } */

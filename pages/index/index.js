@@ -15,28 +15,33 @@ Page({
   },
   onLoad: function () {
     this.colorThief = new ColorThief()
-
-    // var tt = wx.canvasGetImageData({
-    //   canvasId: 'canvasPlaceholder',
-    //   x: 0,
-    //   y: 0,
-    //   width: 100,
-    //   height: 100,
-    // })
-    // // var context = wx.createCanvasContext('canvasPlaceholder')
-    // console.log('xxx...', tt)
   },
 
-  takePhoto() {
-    const ctx = wx.createCameraContext()
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
+  chooseImage() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
         this.setData({
           photoSrc: res.tempImagePath
         })
       }
     })
+  },
+
+  takePhoto() {
+    //console.log('xxx...su')
+    // const ctx = wx.createCameraContext()
+    // ctx.takePhoto({
+    //   quality: 'high',
+    //   success: (res) => {
+    //     this.setData({
+    //       photoSrc: res.tempImagePath
+    //     })
+    //   }
+    // })
   },
   photoError(e) {
     console.log(e.detail)

@@ -1,8 +1,9 @@
 <!--index.wxml-->
 <view class="container">
   <!-- camera.wxml -->
-  <camera device-position="back" flash="off" binderror="photoError" style="width: 100%; height: 300px;"></camera>
-  <button type="primary" bindtap="takePhoto">拍照</button>
+  <!-- <camera device-position="back" flash="off" binderror="photoError" style="width: 100%; height: 300px;"></camera> -->
+  <!-- <button type="primary" bindtap="takePhoto">拍照</button> -->
+  <image class='cameraImg' bindtap="chooseImage" src="{{'./assets/camera.png'}}"></image>
   <view>预览</view>
   <image mode="widthFix" src="{{photoSrc}}"></image>
   <button type='primary' bindtap='onThiefColor'>识别</button>
