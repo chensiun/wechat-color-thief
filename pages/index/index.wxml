@@ -1,5 +1,8 @@
 <!--index.wxml-->
 <view class="container" style="background:{{curColor || palettes[0]}};">
+
+  <image wx:if="{{!photoSrc}}" class='demo' src="{{'./assets/demo.png'}}"></image>
+
   <image wx:if="{{!photoSrc}}" class='cameraImg' bindtap="chooseImage" src="{{'./assets/camera.png'}}"></image>
   <image wx:else class='photoSrc' src="{{photoSrc}}"></image>
 
