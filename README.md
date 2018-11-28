@@ -1,7 +1,7 @@
 # wechat-color-thief
 🎨 微信小程序：根据手机壳颜色改变App主题色
 
-![Color Thief set up-w140](http://7xr5j6.com1.z0.glb.clouddn.com/colorThief.jpg)
+![Color Thief set up-w140](https://user-gold-cdn.xitu.io/2018/9/28/1661f087a35994b1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 效果如下图
 
